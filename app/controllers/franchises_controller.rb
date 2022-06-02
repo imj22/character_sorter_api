@@ -16,5 +16,20 @@ class FranchisesController < ApplicationController
     franchise.destroy
     franchise.to_json
   end
+
+  post "/franchises" do 
+    franchise = Franchise.create(
+      title: params[:title]
+    )
+    franchise.to_json
+  end
+
+  patch "/franchises/:id" do 
+    franchise = Franchise.find(params[:id])
+    franchise.update(
+      title: params[:title]
+    )
+    franchise.to_json
+  end
   
 end

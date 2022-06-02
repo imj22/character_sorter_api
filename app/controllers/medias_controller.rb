@@ -14,4 +14,29 @@ class MediasController < ApplicationController
         media.destroy
         media.to_json
     end    
+
+    post '/medias' do 
+        media = Media.create(
+            release_date: params[:release_date], 
+            director: params[:director], 
+            title: params[:title], 
+            genre: params[:genre],
+            media_type: params[:media_type], 
+            franchise_id: params[:franchise_id]
+        )
+        media.to_json
+    end
+
+    patch "/medias/:id" do 
+        media = Media.find(params[:id])
+        media.update(
+            release_date: params[:release_date], 
+            director: params[:director], 
+            title: params[:title], 
+            genre: params[:genre],
+            media_type: params[:media_type], 
+            franchise_id: params[:franchise_id]
+        )
+        media.to_json
+    end
 end
